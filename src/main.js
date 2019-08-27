@@ -1,8 +1,7 @@
 import program from 'commander';
 import chalk from 'chalk';
 
-import apply from './index.js';
-import { VERSION } from './utils/contants.js';
+import { VERSION } from './utils/Configuation.js';
 
 const actionMap = {
   init: {
@@ -22,6 +21,10 @@ const actionMap = {
   }
 }
 
+const apply = (action, ...args) => {
+  //babel-env
+  require(`./${action}`)(...args);
+};
 
 Object.keys(actionMap).forEach((action) => {
   program.command(action)

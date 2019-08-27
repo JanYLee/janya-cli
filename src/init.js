@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import inquirer from 'inquirer';
 import symbol from 'log-symbols';
 
-import { downloadLocal } from './utils/get';
+import * as api from './utils/Api';
 
 let init = async (templateName, projectName) => {
   // 项目不存在
@@ -24,7 +24,7 @@ let init = async (templateName, projectName) => {
       //通过配置文件，获取模板信息
       let loading = ora('downloading template ...');
       loading.start();
-      downloadLocal(templateName, projectName).then(() => {
+      api.downloadLocal(templateName, projectName).then(() => {
         loading.succeed();
         const fileName = `${projectName}/package.json`;
         if(fs.existsSync(fileName)) {
@@ -34,7 +34,7 @@ let init = async (templateName, projectName) => {
           json.author = answer.author;
           json.description = answer.description;
 
-          fs.writeFileSync(fileName. JSON.stringify(json, null, '\t'), 'utf-8');
+          fs.writeFileSync(fileName, JSON.stringify(json, null, '\t'), 'utf-8');
           console.log(symbol.success, chalk.green('Project initialization finished!'));
         }
       }, () => {

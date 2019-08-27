@@ -13,5 +13,6 @@ export const RC = `${HOME}/.janyarc`;
 // 模板下载地址可配置
 export const DEFAULTS = {
   registry: 'JanYLee',
-  type: 'users'
+  type: 'users',
+  default: 'janya-base-js-template'
 }

@@ -24,7 +24,11 @@ var _logSymbols = require('log-symbols');
 
 var _logSymbols2 = _interopRequireDefault(_logSymbols);
 
-var _get = require('./utils/get');
+var _Api = require('./utils/Api');
+
+var api = _interopRequireWildcard(_Api);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57,7 +61,7 @@ var init = function () {
                           loading = (0, _ora2.default)('downloading template ...');
 
                           loading.start();
-                          (0, _get.downloadLocal)(templateName, projectName).then(function () {
+                          api.downloadLocal(templateName, projectName).then(function () {
                             loading.succeed();
                             var fileName = projectName + '/package.json';
                             if (_fs2.default.existsSync(fileName)) {
@@ -67,7 +71,7 @@ var init = function () {
                               json.author = answer.author;
                               json.description = answer.description;
 
-                              _fs2.default.writeFileSync(fileName.JSON.stringify(json, null, '\t'), 'utf-8');
+                              _fs2.default.writeFileSync(fileName, JSON.stringify(json, null, '\t'), 'utf-8');
                               console.log(_logSymbols2.default.success, _chalk2.default.green('Project initialization finished!'));
                             }
                           }, function () {

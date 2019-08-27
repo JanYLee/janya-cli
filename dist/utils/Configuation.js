@@ -20,5 +20,6 @@ var RC = exports.RC = HOME + '/.janyarc';
 // 模板下载地址可配置
 var DEFAULTS = exports.DEFAULTS = {
   registry: 'JanYLee',
-  type: 'users'
+  type: 'users',
+  default: 'janya-base-js-template'
 };

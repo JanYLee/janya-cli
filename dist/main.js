@@ -8,11 +8,7 @@ var _chalk = require('chalk');
 
 var _chalk2 = _interopRequireDefault(_chalk);
 
-var _index = require('./index.js');
-
-var _index2 = _interopRequireDefault(_index);
-
-var _contants = require('./utils/contants.js');
+var _Configuation = require('./utils/Configuation.js');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30,16 +26,25 @@ var actionMap = {
   }
 };
 
+var apply = function apply(action) {
+  for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    args[_key - 1] = arguments[_key];
+  }
+
+  //babel-env
+  require('./' + action).apply(undefined, args);
+};
+
 Object.keys(actionMap).forEach(function (action) {
   _commander2.default.command(action).description(actionMap[action].description).alias(actionMap[action].alias) //别名
   .action(function () {
     switch (action) {
       case 'config':
         //配置
-        _index2.default.apply(undefined, [action].concat(_toConsumableArray(process.argv.slice(3))));
+        apply.apply(undefined, [action].concat(_toConsumableArray(process.argv.slice(3))));
         break;
       case 'init':
-        _index2.default.apply(undefined, [action].concat(_toConsumableArray(process.argv.slice(3))));
+        apply.apply(undefined, [action].concat(_toConsumableArray(process.argv.slice(3))));
         break;
       default:
         break;
@@ -60,7 +65,7 @@ function help() {
 _commander2.default.usage('<command> [options]');
 _commander2.default.on('-h', help);
 _commander2.default.on('--help', help);
-_commander2.default.version(_contants.VERSION, '-V --version').parse(process.argv);
+_commander2.default.version(_Configuation.VERSION, '-V --version').parse(process.argv);
 
 // 不带参数时
 if (!process.argv.slice(2).length) {
