@@ -5,8 +5,10 @@ import { VERSION } from './utils/Configuation.js';
 
 const actionMap = {
   init: {
-    description: 'generate a new project from a template',
+    alias: 'i',
+    description: 'generate a new project from my template',
     usages: [
+      'janya init',
       'janya init templateName projectName'
     ]
   },
@@ -58,7 +60,7 @@ function help() {
 program.usage('<command> [options]');
 program.on('-h', help);
 program.on('--help', help);
-program.version(VERSION, '-V --version').parse(process.argv);
+program.version(VERSION, '-v --version').parse(process.argv);
 
 // 不带参数时
 if (!process.argv.slice(2).length) {

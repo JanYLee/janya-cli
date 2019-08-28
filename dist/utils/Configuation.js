@@ -21,5 +21,5 @@ var RC = exports.RC = HOME + '/.janyarc';
 var DEFAULTS = exports.DEFAULTS = {
   registry: 'JanYLee',
   type: 'users',
-  default: 'janya-base-js-template'
+  default: 'janya-tpl-fe-base'
 };

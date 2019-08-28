@@ -16,8 +16,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var actionMap = {
   init: {
-    description: 'generate a new project from a template',
-    usages: ['janya init templateName projectName']
+    alias: 'i',
+    description: 'generate a new project from my template',
+    usages: ['janya init', 'janya init templateName projectName']
   },
   config: {
     alias: 'cfg',
@@ -65,7 +66,7 @@ function help() {
 _commander2.default.usage('<command> [options]');
 _commander2.default.on('-h', help);
 _commander2.default.on('--help', help);
-_commander2.default.version(_Configuation.VERSION, '-V --version').parse(process.argv);
+_commander2.default.version(_Configuation.VERSION, '-v --version').parse(process.argv);
 
 // 不带参数时
 if (!process.argv.slice(2).length) {

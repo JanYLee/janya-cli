@@ -14,5 +14,5 @@ export const RC = `${HOME}/.janyarc`;
 export const DEFAULTS = {
   registry: 'JanYLee',
   type: 'users',
-  default: 'janya-base-js-template'
+  default: 'janya-tpl-fe-base'
 }
