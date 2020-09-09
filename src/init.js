@@ -38,7 +38,8 @@ const init = async (templateName, projectName) => {
     inquirer.prompt([
       {
         name: 'projectName',
-        message: 'Please enter the project name: '
+        message: 'Please enter the project name: ',
+        default: 'myApp'
       },
       {
         name: 'description',
